@@ -1,0 +1,17 @@
+--algunas pruebas con sucesiones
+prueba eps = let nMay = 1/(sqrt eps)
+             in do putStrLn $ "dame un numero mayor que " ++ (show nMay)
+                   n <- readLn :: IO Int
+                   let res =  1/((fromIntegral n)^2)
+                   putStrLn $ "el resultado de la funcion es" ++ 
+                      (show res)
+                   putStrLn $ show $ res < eps 
+prueba2 f feps lim = do putStrLn "menor que que numero quieres hacer la funcion"
+                        eps <- (readLn :: IO Double)
+                        putStrLn $ "la N adecuada es" ++ (show (feps eps))
+                        putStrLn $ "escoge un numero mayor que " ++ (show $ (feps eps))
+                        n <- readLn :: IO Int 
+                        putStrLn $ "la funcion y el limite estan a " ++ (show $ abs $ (f n) - lim)
+                    
+prueba3 = prueba2 (\n -> (1 + (-1)^n * (1/fromIntegral n))) (\e -> 1/e) 1
+  
